@@ -14,6 +14,7 @@ class ReservationController extends Controller
 	public function stepOne()
 	{
 		$reservation = new Reservation();
+
 		if (session()->has('reservation')) {
 			$reservation = session()->get('reservation');
 		}
@@ -44,8 +45,11 @@ class ReservationController extends Controller
 	public function store(Request $request)
 	{
 		$request->validate(['table_id' => 'required|integer']);
+
 		$reservation = session()->get('reservation');
+
 		$reservation['table_id'] = $request->input('table_id');
+
 		$id = Reservation::create($reservation);	
 
 		return to_route('reservation.success', ['reservation' => $id]);
@@ -60,5 +64,26 @@ class ReservationController extends Controller
 		session()->forget('reservation');
 
 		return view('reservation.success', ['reservation' => $reservation]);
+	}
+
+	public function index(Request $request)
+	{
+		$search = $request->query('search');
+		if ($search) {
+			// aumentar otros campos y solucionar cuando buscar y haces la paginacion
+			$reservations = Reservation::where('first_name', 'LIKE', '%'.$search.'%')->paginate(5);
+		} else {
+		 	$reservations = Reservation::orderBy('to_date', 'ASC')->paginate(2);
+		}
+
+		return view('reservation.index', [
+			'reservations' => $reservations,
+			'search' => $search,
+		]);
+	}
+
+	public function create()
+	{
+		return view('reservation.create');
 	}
 }
