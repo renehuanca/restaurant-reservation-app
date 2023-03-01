@@ -52,7 +52,7 @@ class ReservationController extends Controller
 
 		$id = Reservation::create($reservation);	
 
-		return to_route('reservation.success', ['reservation' => $id]);
+		return to_route('reservations.success', ['reservation' => $id]);
 	}
 
 	public function success(Reservation $reservation)

@@ -20,12 +20,12 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::middleware(['tables.avalaible'])->group(function () {
-	Route::redirect('/reservation', '/reservation/step-one')->name('reservation');
+	Route::redirect('/reservations', '/reservation/step-one')->name('reservation');
 	Route::controller(ReservationController::class)->group(function () {
-		Route::get('/reservation/step-one', 'stepOne')->name('reservation.step_one');
-		Route::get('/reservation/step-two', 'stepTwo')->name('reservation.step_two');
-		Route::post('/reservations', 'store')->name('reservation.store');
-		Route::get('/reservation/success/{reservation}', 'success')->name('reservation.success');
+		Route::get('/reservations/step-one', 'stepOne')->name('reservations.step_one');
+		Route::get('/reservations/step-two', 'stepTwo')->name('reservations.step_two');
+		Route::post('/reservations', 'store')->name('reservations.store');
+		Route::get('/reservations/success/{reservation}', 'success')->name('reservations.success');
 		Route::get('/reservations', 'index')->name('reservations.index');
 		Route::get('/reservations/create', 'create')->name('reservations.create');
 	});
