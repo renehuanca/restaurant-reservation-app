@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 final class TableService
 {
-	public function hasTablesAvalaible(): bool
+	public function hasTablesAvailable(): bool
 	{
 		$tables = Table::where('status', TableStatus::Available)
 			->get();
