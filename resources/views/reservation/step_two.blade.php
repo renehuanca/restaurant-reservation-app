@@ -3,7 +3,7 @@
 
 	<div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow-md border-2 dark:border-none sm:rounded-lg">
                 <div class="max-w-xl">
 					<section>
 						<header>
@@ -45,7 +45,7 @@
 								<x-input-error class="mt-2" :messages="$errors->get('table_id')" />
 								
 								<div class="flex align-center justify-center">
-									<div class="grid grid-rows-2 grid-flow-col gap-4 mt-4 h-[200px] w-[380px] pt-8 px-2 object-cover" style="background: url('{{asset("img/bg-restaurant.png")}}') no-repeat ;">
+									<div class="grid grid-rows-2 grid-flow-col gap-4 mt-4 h-[200px] w-[380px] pt-16 px-2 object-cover rounded-md" style="background: url('{{asset("img/bg-restaurant.png")}}') no-repeat; background-position: 0px 2px;">
 									@foreach ($allTables as $table)
 									<button value="{{ $table->id }}" @if($tablesAvailable->find($table->id) == null) disabled @endif class="table_button" type="button" @click="
 											table = {{ $table->id }}
