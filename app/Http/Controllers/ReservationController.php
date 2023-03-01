@@ -42,13 +42,19 @@ class ReservationController extends Controller
 		]);
 	}
 
-	public function store(Request $request)
+	public function store(Request $request, TableService $tableService)
 	{
 		$request->validate(['table_id' => 'required|integer']);
 
 		$reservation = session()->get('reservation');
 
 		$reservation['table_id'] = $request->input('table_id');
+
+		// for a parallel reservation
+		$table = Table::find($reservation['table_id']);
+		if (! $table->status == 'available') {
+			abort(402, 'Table is not available recently');
+		}
 
 		$id = Reservation::create($reservation);	
 

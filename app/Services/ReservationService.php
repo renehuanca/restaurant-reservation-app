@@ -8,13 +8,17 @@ use Illuminate\Database\Eloquent\Collection;
 
 final class ReservationService
 {
+	/**
+	 * Reservation in date obtain all the reservation just in date in format string ('Y-m-d')
+	 */
 	public function reservationsInDate(string $date): Collection
 	{
-		return Reservation::orderBy('to_date')->get()->filter(function($value) use($date) {
-			$valueDate = Carbon::parse($value->to_date);
-		    $reservationDate = Carbon::parse($date);
+		$date = Carbon::parse($date)->format('Y-m-d');
 
-			return $valueDate->equalTo($reservationDate);
+		return Reservation::orderBy('to_date')->get()->filter(function($value) use($date) {
+			$dateOnRecord = Carbon::parse($value->to_date)->format('Y-m-d');
+
+			return $date == $dateOnRecord;
 		});
 	}
 }

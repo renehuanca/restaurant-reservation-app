@@ -20,11 +20,11 @@ final class TableService
 
 	public function tablesAvailable(string $guestNumber, string $date): Collection
 	{
-		$reservationsInDate = (new ReservationService)->reservationsInDate($date);
+		$reservations = (new ReservationService)->reservationsInDate($date);
 
 		return Table::where('status', TableStatus::Available)
 			->where('guest_number', '>=', $guestNumber)
-			->whereNotIn('id', $reservationsInDate->pluck('table_id'))
+			->whereNotIn('id', $reservations->pluck('table_id'))
 			->get();
 	}
 }
