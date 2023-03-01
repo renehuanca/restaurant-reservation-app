@@ -1,4 +1,10 @@
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="{isDark: true}" x-bind:class="isDark ? 'dark' : 'light'" x-init="
+if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  document.documentElement.classList.add('dark')
+} else {
+  document.documentElement.classList.remove('dark')
+}
+">
 
 <head>
   <meta charset="utf-8">
@@ -54,18 +60,27 @@
             <a href="#categories" class="font-semibold text-gray-900 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">Categories</a>
             <a href="#ourMenu" class="font-semibold text-gray-900 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">Menu</a>
           </div>
-          @if (Route::has('login'))
+
           <div class="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
+            <div class="inline-block flex items-center text-gray-600 dark:text-gray-300 mr-2" @click="isDark = !isDark; if(isDark) {localStorage.theme = 'dark'} else {localStorage.theme = 'light'}">
+              <svg x-show="!isDark" x-transition xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+              </svg>
+              <svg x-show="isDark" x-transition xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+              </svg>
+            </div>
+            @if (Route::has('login'))
             @auth
-            <a href="{{ url('/dashboard') }}" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:hover:text-gray-100">Dashboard</a>
+            <a href="{{ url('/dashboard') }}" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300 shadow-sm ring-1 ring-gray-900/10 dark:ring-gray-300 hover:ring-gray-900/20 dark:hover:text-gray-100">Dashboard</a>
             @else
-            <a href="{{ route('login') }}" class="inline-block rounded-lg px-3 py-1.5 text-sm dark:text-gray-300 font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20dark:hover:text-gray-100">Log in</a>
+            <a href="{{ route('login') }}" class="inline-block rounded-lg px-3 py-1.5 text-sm dark:text-gray-300 font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 dark:ring-gray-300 hover:ring-gray-900/20dark:hover:text-gray-100">Log in</a>
             @if (Route::has('register'))
-            <a href="{{ route('register') }}" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold  dark:text-gray-300 leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20 mx-2dark:hover:text-gray-100">Register</a>
+            <a href="{{ route('register') }}" class="ml-2 inline-block rounded-lg px-3 py-1.5 text-sm font-semibold  dark:text-gray-300 leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 dark:ring-gray-300 hover:ring-gray-900/20 mx-2dark:hover:text-gray-100">Register</a>
             @endif
             @endauth
+            @endif
           </div>
-          @endif
         </nav>
         <!-- End Desktop menu -->
 
@@ -76,7 +91,7 @@
               <div class="flex">
                 <a href="#" class="-m-1.5 p-1.5">
                   <span class="sr-only">Your Company</span>
-                  <img class="h-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+                  <x-application-logo class="h-8"></x-application-logo>
                 </a>
               </div>
               <div class="flex">
@@ -98,6 +113,14 @@
                 </div>
 
                 <div class="py-6">
+                  <div class="inline-block flex items-center text-gray-600 dark:text-gray-300 mr-2" @click="isDark = !isDark; if(isDark) {localStorage.theme = 'dark'} else {localStorage.theme = 'light'}">
+                    <svg x-show="!isDark" x-transition xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                    </svg>
+                    <svg x-show="isDark" x-transition xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                    </svg>
+                  </div>
                   @if (Route::has('login'))
                   @auth
                   <a href="{{ url('/dashboard') }}" class="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 dark:text-gray-300 hover:bg-gray-400/10">Dashboard</a>
@@ -122,4 +145,5 @@
     </main>
   </div>
 </body>
+
 </html>
