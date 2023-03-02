@@ -145,6 +145,10 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
     <main>
       {{ $slot }}
     </main>
+
+    <footer class="text-center py-8">
+      © {{ now()->format('Y') }} - renehuanca999@gmail.com
+    </footer>
   </div>
 </body>
 
