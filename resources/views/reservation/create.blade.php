@@ -38,13 +38,14 @@
 			</nav>
 			<div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
 				<div class="p-6 text-gray-900 dark:text-gray-100">
-					make a coponent
+
+					<!-- Component form -->
 					<section>
 						<header>
 							<h2 class="text-lg font-medium text-gray-900 dark:text-gray-100"><span class="font-bold">STEP 1:</span> Make Reservation</h2>
 							<p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Make a reservation, enter your data.</p>
 						</header>
-						<form method="get" action="{{ route('reservation.step_two') }}" class="mt-6 space-y-6">
+						<form method="get" action="{{ route('reservations.step_two') }}" class="mt-6 space-y-6">
 							@csrf
 
 							<div>

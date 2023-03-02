@@ -90,6 +90,10 @@ class ReservationController extends Controller
 
 	public function create()
 	{
-		return view('reservation.create');
+		return view('reservation.create', [
+			'reservation' => new Reservation(),
+			'minDate' => Carbon::today(),
+			'maxDate' => Carbon::now()->addWeek(),
+		]);
 	}
 }
