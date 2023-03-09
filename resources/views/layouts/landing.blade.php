@@ -44,11 +44,21 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
         <nav class="flex h-9 items-center justify-between" aria-label="Global">
           <div class="flex lg:min-w-0 lg:flex-1" aria-label="Global">
             <a href="{{ route('welcome') }}" class="-m-1.5 p-1.5">
-              <span class="sr-only">Your Company</span>
+              <span class="sr-only">Reservation app</span>
               <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
           </div>
           <div class="flex lg:hidden">
+			  <!-- theme switcher -->
+			  <div class="inline-block flex items-center text-gray-600 dark:text-gray-300 mr-4" @click="isDark = !isDark; if(isDark) {localStorage.theme = 'dark'} else {localStorage.theme = 'light'}">
+				<svg x-show="!isDark" x-transition xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+				  <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+				</svg>
+				<svg x-show="isDark" x-transition xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+				  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+				</svg>
+			  </div>
+
             <button @click="open = true" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-300">
               <span class="sr-only">Open main menu</span>
               <!-- Heroicon name: outline/bars-3 -->
@@ -64,6 +74,8 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
           </div>
 
           <div class="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
+						
+        	<!-- theme switcher -->
             <div class="flex items-center text-gray-600 dark:text-gray-300 mr-2" @click="isDark = !isDark; if(isDark) {localStorage.theme = 'dark'} else {localStorage.theme = 'light'}">
               <svg x-show="!isDark" x-transition xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
@@ -72,6 +84,7 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
               </svg>
             </div>
+
             @if (Route::has('login'))
             @auth
             <a href="{{ url('/dashboard') }}" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300 shadow-sm ring-1 ring-gray-900/10 dark:ring-gray-300 hover:ring-gray-900/20 dark:hover:text-gray-100">Dashboard</a>
@@ -115,14 +128,7 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
                 </div>
 
                 <div class="py-6">
-                  <div class="inline-block flex items-center text-gray-600 dark:text-gray-300 mr-2" @click="isDark = !isDark; if(isDark) {localStorage.theme = 'dark'} else {localStorage.theme = 'light'}">
-                    <svg x-show="!isDark" x-transition xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
-                    </svg>
-                    <svg x-show="isDark" x-transition xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-                    </svg>
-                  </div>
+
                   @if (Route::has('login'))
                   @auth
                   <a href="{{ url('/dashboard') }}" class="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 dark:text-gray-300 hover:bg-gray-400/10">Dashboard</a>
