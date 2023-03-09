@@ -1,0 +1,16 @@
+* [33m5653fd7[m[33m ([m[1;36mHEAD -> [m[1;32mdev[m[33m)[m feat: a client can be reserve just in a date
+* [33m255fe07[m feat: add images
+* [33me3fbf91[m test: reservation test
+* [33m0df2e05[m fix: inline-block is the same than flex
+* [33m32eb9cc[m test: tables available middleware test
+* [33mfe0d89e[m fix: middleware table available not exits
+* [33m845096a[m fix: improve naming
+* [33m36e93ee[m fix: dark theme default values
+* [33md451ee5[m style: reservations tabs
+* [33m98583b4[m feat: dark mode switcher and logo in navigation mobile
+* [33m002b82f[m feat: home section and menu dark
+* [33maba556e[m feat: add logo
+* [33m1c1f256[m reservation step one, step two
+* [33m82d28e3[m migrations have been created
+* [33mce514c8[m[33m ([m[1;32mmain[m[33m)[m feat: change to sqlite
+* [33m41ee6a0[m Initial commit

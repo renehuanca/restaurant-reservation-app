@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+})->name('welcome');
+
+Route::middleware(['tables.avalaible'])->group(function () {
+	Route::redirect('/reservations', '/reservation/step-one')->name('reservation');
+	Route::controller(ReservationController::class)->group(function () {
+		Route::get('/reservations/step-one', 'stepOne')->name('reservations.step_one');
+		Route::get('/reservations/step-two', 'stepTwo')->name('reservations.step_two');
+		Route::post('/reservations', 'store')->name('reservations.store');
+		Route::get('/reservations/success/{reservation}', 'success')->name('reservations.success');
+		Route::get('/reservations', 'index')->name('reservations.index');
+		Route::get('/reservations/create', 'create')->name('reservations.create');
+	});
 });
 
 Route::get('/dashboard', function () {
