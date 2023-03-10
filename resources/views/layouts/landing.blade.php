@@ -6,7 +6,7 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
   document.documentElement.classList.remove('dark')
   isDark = false
 }
-">
+" class="scroll-smooth">
 
 <head>
   <meta charset="utf-8">
@@ -69,13 +69,12 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
           </div>
           <div class="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-center lg:gap-x-12">
             <a href="{{ route('welcome') }}" class="font-semibold text-gray-900 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">Home</a>
-            <a href="#categories" class="font-semibold text-gray-900 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">Categories</a>
             <a href="#ourMenu" class="font-semibold text-gray-900 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">Menu</a>
           </div>
 
           <div class="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
 						
-        	<!-- theme switcher -->
+        	  <!-- theme switcher -->
             <div class="flex items-center text-gray-600 dark:text-gray-300 mr-2" @click="isDark = !isDark; if(isDark) {localStorage.theme = 'dark'} else {localStorage.theme = 'light'}">
               <svg x-show="!isDark" x-transition xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
@@ -123,8 +122,7 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
               <div class="-my-6 divide-y divide-gray-500/10 dark:divide-gray-500">
                 <div class="space-y-2 py-6">
                   <a href="{{ route('welcome') }}" class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 dark:text-gray-300 hover:bg-gray-400/10">Home</a>
-                  <a href="#categories" class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 dark:text-gray-300 hover:bg-gray-400/10">Categories</a>
-                  <a href="#ourMenu" class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 dark:text-gray-300 hover:bg-gray-400/10">Menu</a>
+                  <a href="{{ route('welcome') }}/#ourMenu" @click="open = false" class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 dark:text-gray-300 hover:bg-gray-400/10">Menu</a>
                 </div>
 
                 <div class="py-6">
