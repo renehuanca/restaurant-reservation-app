@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\TableStatus;
 use App\Http\Requests\StepTwoReservationRequest;
 use App\Http\Requests\StoreReservationRequest;
 use App\Models\Table;
@@ -35,7 +36,7 @@ class ReservationController extends Controller
 	public function store(StoreReservationRequest $request)
 	{
 		$tableToReserve = Table::findOrFail($request->table_id);
-		if (!$tableToReserve->status == 'available') {
+		if (!$tableToReserve->status == TableStatus::Available) {
 			abort(Response::HTTP_NOT_FOUND, 'Table is not available.');
 		}
 
