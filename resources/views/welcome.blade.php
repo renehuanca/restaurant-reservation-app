@@ -5,7 +5,7 @@
   <div class="relative px-6 lg:px-8">
     <div class="mx-auto max-w-3xl pt-8 pb-32 sm:pt-8 sm:pb-40 relative z-1">
       <div>
-        <img class="flex m-auto w-[200] sm:w-[250] pb-10" src="{{ asset('img/comida.png') }}" alt="">
+        <img class="flex m-auto w-[200px] sm:w-[250px] pb-10" src="{{ asset('img/comida.png') }}" alt="">
         <h1 class="text-4xl font-bold tracking-tight text-center dark:text-gray-100 sm:text-6xl">Reservations App</h1>
         <p class="mt-6 text-lg leading-8 text-gray-800 dark:text-gray-300 text-center">Welcome to our website, enjoy your stay.</p>
         <div class="mt-8 flex gap-x-4 justify-center">
