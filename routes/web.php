@@ -34,6 +34,8 @@ Route::middleware(['tables.avalaible'])->group(function () {
 	});
 });
 
+Route::view('/tables-not-available', 'reservation.not_available')->name('tables.not_available');
+
 Route::get('/dashboard', function () {
 	return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

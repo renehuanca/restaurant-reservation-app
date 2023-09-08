@@ -17,11 +17,11 @@ class TablesAvailable
      */
     public function handle(Request $request, Closure $next)
     {
-		$tableService = new TableService();
-		
-		if (! $tableService->hasTablesAvailable()) {
-		    abort(403, __('Ups!! there are not tables available.'));
-		}
+        $tableService = new TableService();
+
+        if (!$tableService->hasTablesAvailable()) {
+            return to_route('tables.not_available');
+        }
 
         return $next($request);
     }
