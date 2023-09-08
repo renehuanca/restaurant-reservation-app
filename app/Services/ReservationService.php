@@ -15,7 +15,7 @@ final class ReservationService
 	{
 		$date = Carbon::parse($date)->format('Y-m-d');
 
-		return Reservation::orderBy('to_date')->get()->filter(function($value) use($date) {
+		return Reservation::orderBy('to_date')->get()->filter(function ($value) use ($date) {
 			$dateOnRecord = Carbon::parse($value->to_date)->format('Y-m-d');
 
 			return $date == $dateOnRecord;

@@ -15,25 +15,25 @@
 
 							<div>
 								<x-input-label for="first_name" :value="__('First Name')" />
-								<x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full" :value="old('first_name', $reservation['first_name'])" required autofocus autocomplete="first_name" />
+								<x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full" :value="'Juan'" required autofocus autocomplete="first_name" />
 								<x-input-error class="mt-2" :messages="$errors->get('first_name')" />
 							</div>
 
 							<div>
 								<x-input-label for="last_name" :value="__('Last Name')" />
-								<x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full" :value="old('last_name', $reservation['last_name'])" required autocomplete="last_name" />
+								<x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full" :value="'Mamani'" required autocomplete="last_name" />
 								<x-input-error class="mt-2" :messages="$errors->get('last_name')" />
 							</div>
 
 							<div>
 								<x-input-label for="email" :value="__('Email')" />
-								<x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $reservation['email'])" required autocomplete="email" />
+								<x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="'juan@gmail.com'" required autocomplete="email" />
 								<x-input-error class="mt-2" :messages="$errors->get('email')" />
 							</div>
 
 							<div>
 								<x-input-label for="phone" :value="__('Phone Number')" />
-								<x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full" :value="old('phone', $reservation['phone'])" required autocomplete="phone" />
+								<x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full" :value="'748484'" required autocomplete="phone" />
 								<x-input-error class="mt-2" :messages="$errors->get('phone')" />
 							</div>
 
@@ -45,7 +45,7 @@
 
 							<div>
 								<x-input-label for="guest_number" :value="__('Guest Number')" />
-								<x-text-input id="guest_number" name="guest_number" type="text" class="mt-1 block w-full" :value="old('guest_number', $reservation['guest_number'])" required autocomplete="phone" />
+								<x-text-input id="guest_number" name="guest_number" type="text" class="mt-1 block w-full" value="2" required autocomplete="phone" />
 								<x-input-error class="mt-2" :messages="$errors->get('guest_number')" />
 							</div>
 
