@@ -49,7 +49,7 @@ class ReservationController extends Controller
 	{
 		session()->forget('reservation');
 
-		return view('reservation.success', ['reservation' => $reservation]);
+		return view('reservation.success', ['reservation' => $reservation->with('table')->first()]);
 	}
 
 	public function index(Request $request)

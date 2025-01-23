@@ -2,10 +2,40 @@
   <x-slot name="title">Successfully</x-slot>
 
   <div class="py-12 relative px-6 lg:px-8">
-    <div class="mx-auto max-w-3xl pt-20 pb-32 sm:pt-48 sm:pb-40">
+    <div class="mx-auto max-w-3xl pt-8 pb-16 sm:pt-24 sm:pb-20">
       <div>
         <div>
           <h1 class="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl">Tankyou reserved successfully</h1>
+          <div class="flex flex-col sm:flex-row justify-between sm:mt-8">
+          <table class="text-left mt-8 sm:mt-0 leading-normal">
+            <tbody>
+              <tr>
+                <th class="px-5 py-3 border-b-2 border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-900 text-left text-xs font-semibold text-gray-600 dark:text-gray-200 uppercase tracking-wider">Name</th>
+                <td class="px-5 py-3 border-b-2 border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-900 text-left text-sm text-gray-600 dark:text-gray-200">{{ $reservation->first_name }} {{ $reservation->last_name }}</td>
+              </tr>
+              <tr>
+                <th class="px-5 py-3 border-b-2 border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-900 text-left text-xs font-semibold text-gray-600 dark:text-gray-200 uppercase tracking-wider">Email</th>
+                <td class="px-5 py-3 border-b-2 border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-900 text-left text-sm text-gray-600 dark:text-gray-200">{{ $reservation->email }}</td>
+              </tr>
+              <tr>
+                <th class="px-5 py-3 border-b-2 border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-900 text-left text-xs font-semibold text-gray-600 dark:text-gray-200 uppercase tracking-wider">Phone</th>
+                <td class="px-5 py-3 border-b-2 border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-900 text-left text-sm text-gray-600 dark:text-gray-200">{{ $reservation->phone }}</td>
+              </tr>
+              <tr>
+                <th class="px-5 py-3 border-b-2 border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-900 text-left text-xs font-semibold text-gray-600 dark:text-gray-200 uppercase tracking-wider">To date</th>
+                <td class="px-5 py-3 border-b-2 border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-900 text-left text-sm text-gray-600 dark:text-gray-200">{{ $reservation->to_date }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="max-w-sm mt-4 sm:mt-0 rounded-lg shadow-md bg-gray-100 dark:bg-gray-800 flex justify-between py-4 px-4">
+              <img class="m-auto w-[100px] sm:w-[150px]" src="{{ asset('img/comida.png') }}" alt="">
+              <div class="ml-4">
+                    <h3 class="text-lg font-bold uppercase tracking-wider mb-4">{{ $reservation->table->name }}</h3>
+                    <span>GUEST NUMBER: {{ $reservation->table->guest_number }}</span>
+                    <span class="text-sm">Location: {{ $reservation->table->location }}</span>
+              </div>
+          </div>
+          </div>
           <div class="mt-8 flex gap-x-4 sm:justify-center">
             <a href="{{ route('reservations.step_one') }}" class="inline-block rounded-lg bg-indigo-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-indigo-600 hover:bg-indigo-700 hover:ring-indigo-700">
               Back to home page

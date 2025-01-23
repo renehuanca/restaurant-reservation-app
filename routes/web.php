@@ -4,6 +4,7 @@ use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReservationController;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,10 @@ use App\Http\Controllers\ReservationController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+DB::listen(function ($query) {
+	var_dump($query->sql);
+});
 
 Route::get('/dark-mode-switcher', DarkModeController::class)->name('dark_mode_switcher');
 

@@ -21,7 +21,7 @@ class ReservationTest extends TestCase
         $response->assertOk();
     }
 
-    public function test_step_one_reservation_to_step_two()
+    public function test_step_one_can_be_changed_to_step_two()
     {
         Table::factory()->available()->create();
 
@@ -37,5 +37,27 @@ class ReservationTest extends TestCase
         $response = $this->get(route('reservations.step_two', $reservation));
 
         $response->assertSessionHas('reservation', $reservation);
+    }
+
+    public function test_a_reservation_can_be_stored()
+    {
+        $table = Table::factory()->available()->create();
+
+        $reservation = [
+            "first_name" => "Juan",
+            "last_name" => "Mamani",
+            "email" => "juan@gmail.com",
+            "to_date" => "2023-09-09T20:00",
+            "phone" => "76363633",
+            "guest_number" => "2",
+        ];
+
+        $this->get(route('reservations.step_two', $reservation));
+
+        $this->post(route('reservations.store'), [
+            'table_id' => $table->id
+        ]);
+
+        $this->assertDatabaseHas('reservations', ['table_id' => $table->id]);
     }
 }
